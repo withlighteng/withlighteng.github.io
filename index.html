@@ -1,25 +1,497 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>With Light</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>With Light</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+
+      background: #f8f8f6;
+      color: #1d1d1f;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(900px, 88%);
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+
+    nav {
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+
+      font-size: 14px;
+      color: #666;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    /* 首页 */
+
+    .hero {
+      min-height: 72vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .small-title {
+      font-size: 14px;
+      color: #777;
+
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: clamp(48px, 8vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    .hero-text {
+      max-width: 620px;
+
+      margin-top: 28px;
+
+      font-size: 20px;
+      color: #555;
+    }
+
+    .hero-links {
+      margin-top: 34px;
+
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+
+      padding: 10px 18px;
+
+      border: 1px solid #ccc;
+      border-radius: 999px;
+
+      font-size: 14px;
+
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #1d1d1f;
+      color: white;
+      border-color: #1d1d1f;
+    }
+
+    /* 内容区 */
+
+    section {
+      padding: 80px 0;
+
+      border-top: 1px solid #ddd;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #888;
+    }
+
+    h2 {
+      margin-top: 0;
+
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .text {
+      max-width: 680px;
+
+      color: #555;
+      font-size: 17px;
+    }
+
+    /* 卡片 */
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+      gap: 18px;
+
+      margin-top: 30px;
+    }
+
+    .card {
+      padding: 24px;
+
+      background: white;
+
+      border: 1px solid #e4e4e4;
+      border-radius: 14px;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* 联系方式 */
+
+    .contact-link {
+      font-size: 18px;
+
+      border-bottom: 1px solid #aaa;
+    }
+
+    /* 页脚 */
+
+    footer {
+      padding: 40px 0 60px;
+
+      color: #999;
+      font-size: 13px;
+    }
+
+    /* 手机 */
+
+    @media (max-width: 600px) {
+
+      nav {
+        height: 60px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-text {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+    }
+  </style>
 </head>
+
 
 <body>
 
-    <h1>Hello, I'm With Light.</h1>
+  <div class="page">
 
-    <p>这是我的个人网站。</p>
+    <!-- 导航 -->
 
-    <h2>About</h2>
-    <p>电子科技大学本科生，正在学习电子、计算机与人工智能。</p>
+    <nav>
 
-    <h2>Projects</h2>
-    <p>这里以后会放我的项目。</p>
+      <div class="logo">
+        With Light.
+      </div>
 
-    <h2>Notes</h2>
-    <p>这里以后会放我的文章和学习笔记。</p>
+      <div class="nav-links">
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#projects">
+          Projects
+        </a>
+
+        <a href="#notes">
+          Notes
+        </a>
+
+      </div>
+
+    </nav>
+
+
+    <!-- 首页 -->
+
+    <main>
+
+      <div class="hero">
+
+        <div class="small-title">
+          Hello, I'm
+        </div>
+
+        <h1>
+          With Light.
+        </h1>
+
+        <div class="hero-text">
+
+          Exploring engineering,
+          computing and artificial intelligence.
+
+          <br>
+
+          Learning by building things
+          and writing down what I understand.
+
+        </div>
+
+        <div class="hero-links">
+
+          <a
+            class="button"
+            href="#projects"
+          >
+            View Projects
+          </a>
+
+          <a
+            class="button"
+            href="https://github.com/withlighteng"
+            target="_blank"
+          >
+            GitHub ↗
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- 关于我 -->
+
+      <section id="about">
+
+        <div class="section-title">
+          About
+        </div>
+
+        <h2>
+          关于我
+        </h2>
+
+        <div class="text">
+
+          <p>
+            我是电子科技大学本科生，
+            对电子、计算机、人工智能以及真实物理系统中的技术问题感兴趣。
+          </p>
+
+          <p>
+            这个网站会记录我的学习、项目、科研探索，
+            以及一些值得长期保存的思考。
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- 项目 -->
+
+      <section id="projects">
+
+        <div class="section-title">
+          Projects
+        </div>
+
+        <h2>
+          我正在做的事情
+        </h2>
+
+
+        <div class="cards">
+
+          <div class="card">
+
+            <h3>
+              Engineering
+            </h3>
+
+            <p>
+              电子设计、硬件、嵌入式以及完整系统实践。
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Research
+            </h3>
+
+            <p>
+              探索信号、通信、AI 与真实物理系统之间的结合。
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Computing
+            </h3>
+
+            <p>
+              学习编程、算法、工具链以及现代计算机系统。
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- 笔记 -->
+
+      <section id="notes">
+
+        <div class="section-title">
+          Notes
+        </div>
+
+        <h2>
+          Notes & Writing
+        </h2>
+
+        <div class="text">
+
+          <p>
+            这里以后会放我的学习笔记和文章。
+          </p>
+
+          <p>
+            我希望把零散的知识逐渐整理成一个属于自己的知识系统。
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- 联系 -->
+
+      <section>
+
+        <div class="section-title">
+          Contact
+        </div>
+
+        <h2>
+          Find me online.
+        </h2>
+
+        <p>
+
+          <a
+            class="contact-link"
+            href="https://github.com/withlighteng"
+            target="_blank"
+          >
+            github.com/withlighteng ↗
+          </a>
+
+        </p>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+
+      © 2026 With Light
+
+      <br>
+
+      Built from scratch and hosted on GitHub Pages.
+
+    </footer>
+
+  </div>
 
 </body>
+
 </html>
